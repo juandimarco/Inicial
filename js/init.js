@@ -45,5 +45,5 @@ var getJSONData = function(url){
 //elementos HTML presentes.
 
 document.addEventListener("DOMContentLoaded", function(e){
-
+    document.getElementById("user_name").innerHTML = sessionStorage.getItem("user"); // esto me pone el nombre de usuario en la parte de <nav> en todos los html
 });

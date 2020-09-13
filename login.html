@@ -34,6 +34,13 @@
       margin: auto;
     }
   </style>
+
+<script>
+  if (!window.location.href.endsWith("login.html") && !sessionStorage.getItem("loged")) {
+    window.location.href = "login.html"
+  }
+</script>
+
 </head>
 
 <body class="text-center">
@@ -49,7 +56,7 @@
         <input type="checkbox" value="remember-me"> Recuérdame
       </label>
     </div>
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Continuar</button>
+    <button class="btn btn-lg btn-primary btn-block" type="submit" onclick="userName()">Continuar</button>
   </form>
 
   <script src="js/init.js"></script>

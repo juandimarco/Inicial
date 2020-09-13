@@ -1,7 +1,12 @@
-function manejadorDeEvento(evento) {
-    evento.preventDefault();
+function login(event) {
+    event.preventDefault();
     sessionStorage.setItem("loged", "true");
     window.location.href = "index.html"
+}
+
+function userName() {
+    var user = document.getElementById("inputEmail").value;
+    sessionStorage.setItem("user", user);
 }
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
@@ -9,12 +14,5 @@ function manejadorDeEvento(evento) {
 //elementos HTML presentes.
 
 document.addEventListener("DOMContentLoaded", function(e){
-    document.getElementById("form").addEventListener("submit", manejadorDeEvento)
+    document.getElementById("form").addEventListener("submit", login);
 });
-
-
-/*function login() {
-    if (localStorage.getItem("email").value !== "" & inputPassword !== "") {
-    window.location.assign("index.html");
-    }
-}*/

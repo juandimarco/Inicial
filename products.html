@@ -12,6 +12,13 @@
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
+
+    <script>
+      if (!window.location.href.endsWith("login.html") && !sessionStorage.getItem("loged")) {
+        window.location.href = "login.html"
+      }
+    </script>
+    
   </head>
 
   <body>
@@ -22,9 +29,9 @@
         <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
         <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
         <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
+        <a class="py-2 d-none d-md-inline-block" href="" id="user_name"></a>
       </div>
     </nav>
-    
     <main role="main" class="pb-5">
       <div class="text-center p-4">
           <h2>Productos</h2>
@@ -34,14 +41,14 @@
           <div class="row">
               <div class="col text-right">
                   <div class="btn-group btn-group-toggle mb-4" data-toggle="buttons">
-                      <label class="btn btn-light active" id="sortAsc" >
-                          <input type="radio" name="options" autocomplete="off" checked>A-Z
+                      <label class="btn btn-light active" id="sortDesc" >
+                          <input type="radio" name="options" autocomplete="off" checked><i class="fas fa-sort-amount-down mr-1"></i>Precio mayor a menor.
                       </label>
-                      <label class="btn btn-light" id="sortDesc" >
-                          <input type="radio" name="options" autocomplete="off">Z-A
+                      <label class="btn btn-light" id="sortAsc" >
+                          <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down-alt mr-1"></i>Precio menor a mayor
                       </label>
-                      <label class="btn btn-light" id="sortByCount" >
-                          <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down mr-1"></i>Cant.
+                      <label class="btn btn-light" id="sortByRel" >
+                          <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down mr-1"></i>Relevancia
                       </label>
                   </div>
               </div>
@@ -54,14 +61,14 @@
                     <p class="font-weight-normal text-right my-2">Cant.</p>
                   </div>
                   <div class="col">
-                    <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin">
+                    <input class="form-control" type="number" placeholder="min." id="rangeFilterRelMin">
                   </div>
                   <div class="col">
-                    <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax">
+                    <input class="form-control" type="number" placeholder="máx." id="rangeFilterRelMax">
                   </div>
                   <div class="col-3 p-0">
                     <div class="btn-group" role="group">
-                      <button class="btn btn-light btn-block" id="rangeFilterCount">Filtrar</button>
+                      <button class="btn btn-light btn-block" id="rangeFilterRel">Filtrar</button>
                       <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
                     </div>
                   </div>
@@ -73,19 +80,7 @@
               </div>
           </div>
       </div>
-  </main>
-    
-    
-    <!--<div class="container p-5" id="product_list">
-       <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-        <h4 class="alert-heading">¡A trabajar! :)</h4>
-        <p>Esta sección corresponde a: Entrega 1 (Fecha de entrega: 16/08/2020) y Entrega 2 (Fecha de entrega: 30/08/2020).</p>
-        <hr>
-        <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
-      </div>
-    </div> -->
-
-    
+    </main>
     <footer class="text-muted bg-light">
       <div class="container">
         <p class="float-right">

@@ -139,3 +139,20 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+
+.rating {
+  /* unicode-bidi: bidi-override; */
+  direction: rtl;
+  font-size: 140%;
+}
+.rating > i {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+}
+.rating > i:hover:before,
+.rating > i:hover ~ i:before {
+   position: static;
+   color: orange;
+   font-size: 120%;
+}
