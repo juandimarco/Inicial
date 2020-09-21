@@ -143,7 +143,7 @@ a.custom-card:hover {
 .rating {
   /* unicode-bidi: bidi-override; */
   direction: rtl;
-  font-size: 140%;
+  font-size: 120%;
 }
 .rating > i {
   display: inline-block;
@@ -156,3 +156,33 @@ a.custom-card:hover {
    color: orange;
    font-size: 120%;
 }
+
+div.dropdown {cursor: pointer;}
+
+div a.dropdown {
+  color: white;
+  font-size: 100%;
+  padding: 15px;
+  display:inline-block;
+}
+ul {
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+ul li {display: inline-block;}
+ul li:hover {background: rgba(39, 39, 39, 0.739);}
+ul li:hover ul {display: block;}
+ul li ul {
+  position: absolute;
+  width: 100%;
+  display: none;
+  text-align: right;
+}
+li ul li { 
+  background: rgba(39, 39, 39, 0.739);; 
+  display: block; 
+  color: white;
+}
+ul li ul li a {display:block !important;} 
+ul li ul li:hover {background: black; margin: 0.5%;}

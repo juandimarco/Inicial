@@ -40,10 +40,16 @@ var getJSONData = function(url){
     });
 }
 
+function logout() {
+  sessionStorage.removeItem("loged");
+  sessionStorage.removeItem("user");
+  window.location.href = "login.html";
+}
+
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 
 document.addEventListener("DOMContentLoaded", function(e){
-    document.getElementById("user_name").innerHTML = sessionStorage.getItem("user"); // esto me pone el nombre de usuario en la parte de <nav> en todos los html
+    document.getElementById("user_name").innerHTML = sessionStorage.getItem("user") + " ▿ "; // esto me pone el nombre de usuario en la parte de <nav> en todos los html
 });

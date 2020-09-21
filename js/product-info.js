@@ -1,21 +1,45 @@
 var product = {};
 
-function showImagesGallery(array){
+function showImagesGallery(array) {
 
     let htmlContentToAppend = "";
+    let htmlContentToAppendList = "";
 
-    for(let i = 0; i < array.length; i++){
+    for (let i = 0; i < array.length; i++) {
         let imageSrc = array[i];
 
-        htmlContentToAppend += `
+        if (i == 0) {
+            htmlContentToAppendList += `
+            <li data-target="#carouselExampleIndicators" data-slide-to="` + i + `" class="active"></li>
+            `
+            htmlContentToAppend += `
+            <div class="carousel-item active">
+              <img src="` + imageSrc + `" class="d-block w-100" alt="">
+            </div>
+            `
+        }
+        else {
+            htmlContentToAppendList += `
+            <li data-target="#carouselExampleIndicators" data-slide-to="` + i + `"></li>
+            `
+            htmlContentToAppend += `
+            <div class="carousel-item">
+              <img src="` + imageSrc + `" class="d-block w-100" alt="">
+            </div>
+            `
+        }
+
+        
+        /* htmlContentToAppend += `
         <div class="col-lg-3 col-md-4 col-6">
             <div class="d-block mb-4 h-100">
                 <img class="img-fluid img-thumbnail" src="` + imageSrc + `" alt="">
             </div>
         </div>
-        `
+        ` */
 
         document.getElementById("productImagesGallery").innerHTML = htmlContentToAppend;
+        document.getElementById("listaOrdenada").innerHTML = htmlContentToAppendList;
     }
 }
 
@@ -23,7 +47,7 @@ function showRelatedProducts(array) {
     let htmlContentToAppend = "";
     let related = product.relatedProducts;
 
-    for(let i = 0; i < related.length; i++) {
+    for (let i = 0; i < related.length; i++) {
         let j = related[i];
 
         let proRel = array[j];
@@ -43,13 +67,13 @@ function showRelatedProducts(array) {
     }
 }
 
-function showComments(commentArray){
+function showComments(commentArray) {
 
     let htmlContentToAppend = "";
 
-    for(let i = 0; i < commentArray.length; i++){
+    for (let i = 0; i < commentArray.length; i++) {
         let comment = commentArray[i];
-        
+
         var score = "";
         for (let i = 1; i <= comment.score; i++) {
             score += `<span class="fa fa-star checked"></span>`;
@@ -60,9 +84,9 @@ function showComments(commentArray){
 
         htmlContentToAppend += `
         <div>
-            <p><strong> ` + comment.user + " " + score + ` </strong></p>
-            <p> ` + comment.description + `</p>
-            <small class="text-muted">` + comment.dateTime + `</small>
+            <p>` + score + " " + `<small class="text-muted">` + " " + comment.dateTime + `</small> </p>
+            <p><strong> ` + comment.user + ":" + " " +` </strong> ` + " " + comment.description + `</p>
+            
             <hr>
             </div>
         </div>
@@ -77,18 +101,17 @@ function showComments(commentArray){
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
-document.addEventListener("DOMContentLoaded", function(e){
-    getJSONData(PRODUCT_INFO_URL).then(function(resultObj){
-        if (resultObj.status === "ok")
-        {
+document.addEventListener("DOMContentLoaded", function (e) {
+    getJSONData(PRODUCT_INFO_URL).then(function (resultObj) {
+        if (resultObj.status === "ok") {
             product = resultObj.data;
 
-            let productNameHTML  = document.getElementById("productName");
+            let productNameHTML = document.getElementById("productName");
             let productDescriptionHTML = document.getElementById("productDescription");
             let productCostHTML = document.getElementById("productCost");
             let productCountHTML = document.getElementById("productCount");
             let productCategoryHTML = document.getElementById("productCategory");
-            
+
 
             productNameHTML.innerHTML = product.name;
             productDescriptionHTML.innerHTML = product.description;
@@ -99,9 +122,8 @@ document.addEventListener("DOMContentLoaded", function(e){
             //Muestro las imagenes en forma de galería
             showImagesGallery(product.images);
 
-            getJSONData(PRODUCTS_URL).then(function(resultObj2) {
-                if (resultObj2.status === "ok") 
-                {
+            getJSONData(PRODUCTS_URL).then(function (resultObj2) {
+                if (resultObj2.status === "ok") {
                     productRel = resultObj2.data;
                     showRelatedProducts(productRel);
                 }
@@ -109,9 +131,8 @@ document.addEventListener("DOMContentLoaded", function(e){
         }
     });
 
-    getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function(resultObj){
-        if (resultObj.status === "ok")
-        {
+    getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function (resultObj) {
+        if (resultObj.status === "ok") {
             comments = resultObj.data;
 
             showComments(comments);
@@ -128,7 +149,7 @@ let star3 = document.getElementById("three");
 let star4 = document.getElementById("four");
 let star5 = document.getElementById("five");
 
-star1.addEventListener("click", function(e) {
+star1.addEventListener("click", function (e) {
     star1.className = "fa fa-star checked";
     star2.className = "fa fa-star";
     star3.className = "fa fa-star";
@@ -138,7 +159,7 @@ star1.addEventListener("click", function(e) {
     selectedScore = 1;
 });
 
-star2.addEventListener("click", function(e) {
+star2.addEventListener("click", function (e) {
     star1.className = "fa fa-star checked";
     star2.className = "fa fa-star checked";
     star3.className = "fa fa-star";
@@ -147,7 +168,7 @@ star2.addEventListener("click", function(e) {
 
     selectedScore = 2;
 });
-star3.addEventListener("click", function(e) {
+star3.addEventListener("click", function (e) {
     star1.className = "fa fa-star checked";
     star2.className = "fa fa-star checked";
     star3.className = "fa fa-star checked";
@@ -156,7 +177,7 @@ star3.addEventListener("click", function(e) {
 
     selectedScore = 3;
 });
-star4.addEventListener("click", function(e) {
+star4.addEventListener("click", function (e) {
     star1.className = "fa fa-star checked";
     star2.className = "fa fa-star checked";
     star3.className = "fa fa-star checked";
@@ -165,7 +186,7 @@ star4.addEventListener("click", function(e) {
 
     selectedScore = 4;
 });
-star5.addEventListener("click", function(e) {
+star5.addEventListener("click", function (e) {
     star1.className = "fa fa-star checked";
     star2.className = "fa fa-star checked";
     star3.className = "fa fa-star checked";
@@ -184,9 +205,15 @@ document.getElementById("comment").addEventListener("click", function (e) {
     newComment.description = document.getElementById("cuerpo").value;
     newComment.user = sessionStorage.getItem("user");
     newComment.dateTime = new Date();
-
+    
     comments.push(newComment);
 
     showComments(comments);
-
+    
+    document.getElementById("form").reset();
+    star1.className = "fa fa-star checked";
+    star2.className = "fa fa-star unchecked";
+    star3.className = "fa fa-star unchecked";
+    star4.className = "fa fa-star unchecked";
+    star5.className = "fa fa-star unchecked";
 });

@@ -26,12 +26,22 @@
         <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
         <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
         <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-        <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
         <!-- <form>
           <input type="search" id="searcher"/>
           <label for="searcher"></label>
         </form>                                      acá se supone que va el código del buscador de artículos -->
-        <a class="py-2 d-none d-md-inline-block" href="" id="user_name"></a>
+        <div class="dropdown">
+          <ul>
+            <li>
+              <a class="py-2 d-none d-md-inline-block" href="" id="user_name"></a>
+              <ul>
+                <li onclick='window.location.href="cart.html"'><a class="py-2 d-none d-md-inline-block dropdown" > Ver carrito </a></li>
+                <li onclick='window.location.href="my-profile.html"'><a class="py-2 d-none d-md-inline-block dropdown"> Mi perfil </a></li>
+                <li onclick="logout()"><a class="py-2 d-none d-md-inline-block dropdown"> Cerrar sesión </a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
     <main role="main">
